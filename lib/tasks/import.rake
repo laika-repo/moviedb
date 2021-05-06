@@ -23,16 +23,22 @@ namespace :import do
         csv = CSV.parse(csv_text, :headers => true)
 
         # Todo: Normalize location
+
+        print csv.length
+
         csv.each do |row|
-            Movie.create!([
-                :title => row['Movie'].strip,
-                :description => row['Description'],
-                :director => row['Director'],
-                :year => row['Year'],
-                :actor => row['Actor'],
-                :location => row['Filming Location'],
-                :country => row['Country']
-            ])
+            print "***********"
+            print row.inspect
+            print "***********"
+        #     Movie.create!([
+        #         :title => row['Movie'].strip,
+        #         :description => row['Description'],
+        #         :director => row['Director'],
+        #         :year => row['Year'],
+        #         :actor => row['Actor'],
+        #         :location => row['Filming Location'],
+        #         :country => row['Country']
+        #     ])
         end
     end
 
