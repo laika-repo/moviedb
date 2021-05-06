@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_103443) do
     t.string "title"
     t.text "description"
     t.string "director"
+    t.string "actor"
     t.integer "year"
     t.string "location"
     t.string "country"
@@ -24,21 +25,21 @@ ActiveRecord::Schema.define(version: 2021_05_06_103443) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "user_id"
     t.integer "stars"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["movie_id"], name: "index_reviews_on_movie_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "review_id"
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_users_on_movie_id"
+    t.index ["review_id"], name: "index_users_on_review_id"
   end
 
 end
